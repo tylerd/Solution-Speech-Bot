@@ -3,10 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "SolutionName": {
-            "value": "SpeechEchoBotDemo"
+            "value": "SpeechEchoBotDemo2"
         },
         "BotAppId": {
-            "value": "92ef781c-35e2-4827-81d6-19642e6aa8f1"
+            "value": "ceae382f-69ad-4844-aefb-5f9a3d7fc4eb"
         }
     }
 }

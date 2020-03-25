@@ -11,7 +11,7 @@
         },
         "SpeechServiceLocation": {
             "type": "string",
-            "defaultValue": "[resourceGroup().location]"
+            "defaultValue": "westus2"
         },
         "SpeechServiceSku": {
             "type": "string",
