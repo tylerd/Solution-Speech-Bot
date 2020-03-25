@@ -1,0 +1,12 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "SolutionName": {
+            "value": "SpeechEchoBotDemo"
+        },
+        "BotAppId": {
+            "value": "92ef781c-35e2-4827-81d6-19642e6aa8f1"
+        }
+    }
+}
