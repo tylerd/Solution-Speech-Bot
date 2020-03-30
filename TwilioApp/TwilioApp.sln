@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwilioApp.Mvc", "TwilioApp.Mvc\TwilioApp.Mvc.csproj", "{52CF917D-2465-4C31-A852-A41E3D23F95C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwilioApp.Mvc.Tests", "TwilioApp.Mvc.Tests\TwilioApp.Mvc.Tests.csproj", "{54334266-3B11-4086-90AF-8C35B30F0EDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52CF917D-2465-4C31-A852-A41E3D23F95C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52CF917D-2465-4C31-A852-A41E3D23F95C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52CF917D-2465-4C31-A852-A41E3D23F95C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52CF917D-2465-4C31-A852-A41E3D23F95C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54334266-3B11-4086-90AF-8C35B30F0EDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54334266-3B11-4086-90AF-8C35B30F0EDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54334266-3B11-4086-90AF-8C35B30F0EDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54334266-3B11-4086-90AF-8C35B30F0EDB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0AD305CA-2524-40AF-A988-2A51D52D22AB}
+	EndGlobalSection
+EndGlobal
