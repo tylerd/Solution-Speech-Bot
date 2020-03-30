@@ -42,6 +42,16 @@
            "metadata": {
                 "description": "Azure AD App ID to use for Bot Service"
             }
+        },
+        "BotAppPassword": {
+            "type": "securestring"
+        },
+        "BotZipUrl": {
+            "type": "string",
+            "metadata" : {
+                "description": "Url of Zip file to deploy to Web App Bot"
+            },
+            "defaultValue": ""
         }
     },
     "variables": {
@@ -58,9 +68,7 @@
             "sku": {
                 "name": "[parameters('SpeechServiceSku')]"
             },
-            "properties": {
-                "customSubDomainName": null
-            }
+            "properties": {}
         },
         {
             "apiVersion": "2018-02-01",
@@ -97,10 +105,33 @@
                         {
                             "name": "MicrosoftAppId",
                             "value": "[parameters('BotAppId')]"
+                        },
+                        {
+                            "name": "MicrosoftAppPassword",
+                            "value": "[parameters('BotAppPassword')]"
                         }
                     ]
                 }
-            }
+            },
+            "resources": [
+                {
+                    "type": "Extensions",
+                    "apiVersion": "2015-02-01",
+                    "name": "MSDeploy",
+                    "dependsOn": [
+                        "[parameters('WebAppName')]"
+                    ],
+                    "properties": {
+                        "packageUri": "[parameters('BotZipUrl')]",
+                        "dbType": "None",
+                        "connectionString": "",
+                        "setParameters": {
+                            "IIS Web Application Name": "[parameters('WebAppName')]"
+                        }
+                    },
+                    "condition": "[not(equals(parameters('BotZipUrl'), ''))]"
+                }
+            ]
         },
         {
             "type": "Microsoft.BotService/botServices",

@@ -3,7 +3,7 @@
 #Requires -Module Az.Storage
 
 Param(
-    [string] [Parameter(Mandatory = $true)] $ArtifactStagingDirectory,
+    [string] $ArtifactStagingDirectory = ".",
     [string] [Parameter(Mandatory = $true)][alias("ResourceGroupLocation")] $Location,
     [string] $ResourceGroupName = (Split-Path $ArtifactStagingDirectory -Leaf),
     [switch] $UploadArtifacts,

@@ -7,6 +7,17 @@
         },
         "BotAppId": {
             "value": "ceae382f-69ad-4844-aefb-5f9a3d7fc4eb"
+        },
+        "BotAppPassword": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/d377b598-aae7-4875-b4dd-e62a16e19d03/resourceGroups/KV-RG/providers/Microsoft.KeyVault/vaults/Tyler-KV"
+                },
+                "secretName": "BotAppPassword2"
+            }
+        },
+        "BotZipUrl": {
+            "value": "https://bot-framework.azureedge.net/static/115129-91d1510814/bot-packages/v1.3.27-108235/csharp-abs-webapp-v4_echobot_precompiled.zip"
         }
     }
 }
