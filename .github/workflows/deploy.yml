@@ -31,6 +31,6 @@ jobs:
         $cred = $env:AZURE_CREDENTIALS | ConvertFrom-Json
         $secret = ConvertTo-SecureString $cred.clientSecret -AsPlainText -Force
         $psCredential = New-Object System.Management.Automation.PSCredential($cred.clientId, $secret)
-        $env:PSModulePath = "C:\Modules\az_3.5.0\Az\3.5.0" + $env:PSModulePath
+        $env:PSModulePath = "C:\Modules\az_3.5.0;" + $env:PSModulePath
         Get-Module -ListAvailable
         
