@@ -29,6 +29,4 @@ jobs:
       shell: pwsh
       run: |
         $cred = $env:AZURE_CREDENTIALS | ConvertFrom-Json
-        $secret = ConvertTo-SecureString $cred.clientSecret -AsPlainText -Force
-        $psCredential = New-Object System.Management.Automation.PSCredential($cred.clientId, $secret)
-        Connect-AzAccount -ServicePrincipal -Credential $psCredential -Tenant $cred.tenantId -SubscriptionId $cred.subscriptionId
+        
