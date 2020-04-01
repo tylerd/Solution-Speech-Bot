@@ -32,4 +32,3 @@ jobs:
         $secret = ConvertTo-SecureString $cred.clientSecret -AsPlainText -Force
         $psCredential = New-Object System.Management.Automation.PSCredential($cred.clientId, $secret)
         Connect-AzAccount -ServicePrincipal -Credential $psCredential -Tenant $cred.tenantId -SubscriptionId $cred.subscriptionId
-        . .\Deploy-AzTemplate.ps1 -Location $env:LOCATION -ResourceGroupName $env:RESOURCE_GROUP_NAME
