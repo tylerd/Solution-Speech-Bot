@@ -25,7 +25,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Azure Login
-      uses: Azure/login@v1
+      uses: Azure/login@73efa77
       with:
         # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
         creds: ${{ secrets.AZURE_CREDENTIALS }}
@@ -33,3 +33,4 @@ jobs:
 
     - name: Run a one-line script
       run: . .\Deploy-Template.ps1 -Location $env:LOCATION -ResourceGroupName $env:RESOURCE_GROUP_NAME
+      shell: pwsh
