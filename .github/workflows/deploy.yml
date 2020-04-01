@@ -29,4 +29,5 @@ jobs:
       shell: pwsh
       run: |
         $cred = $env:AZURE_CREDENTIALS | ConvertFrom-Json
+        $secret = ConvertTo-SecureString $cred.clientSecret -AsPlainText -Force
         
