@@ -30,4 +30,5 @@ jobs:
       run: |
         $cred = $env:AZURE_CREDENTIALS | ConvertFrom-Json
         $secret = ConvertTo-SecureString $cred.clientSecret -AsPlainText -Force
+        $psCredential = New-Object System.Management.Automation.PSCredential($cred.clientId, $secret)
         
