@@ -11,6 +11,7 @@ on:
 env:
   LOCATION: westus2
   RESOURCE_GROUP_NAME: Solution-Speech-Bot-Demo
+  AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -24,13 +25,11 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     
-    - name: Azure Login
-      uses: Azure/login@73efa77
-      with:
-        # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-        enable-PSSession: true
-
-    - name: Run a one-line script
-      run: . .\Deploy-Template.ps1 -Location $env:LOCATION -ResourceGroupName $env:RESOURCE_GROUP_NAME
+    - name: Deploy to Azure
       shell: pwsh
+      run: |
+        $cred = $env:AZURE_CREDENTIALS | ConvertFrom-Json
+        $secret = ConvertTo-SecureString $cred.clientSecret -AsPlainText -Force
+        $psCredential = New-Object System.Management.Automation.PSCredential($cred.clientId, $secret)
+        Connect-AzAccount -ServicePrincipal -Credential $psCredential -Tenant $cred.tenantId -SubscriptionId $cred.subscriptionId
+        . .\Deploy-AzTemplate.ps1 -Location $env:LOCATION -ResourceGroupName $env:RESOURCE_GROUP_NAME
