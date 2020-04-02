@@ -24,6 +24,12 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+
+    - run: Add-Content -Path $Profile.CurrentUserAllHosts -Value '$Env:PSModulePath += ";C:\Modules\az_3.5.0"'
+      shell: pwsh
+
+    - run: Get-Module -ListAvailable
+      shell: pwsh
     
     - name: Deploy to Azure
       shell: pwsh
@@ -31,7 +37,6 @@ jobs:
         $cred = $env:AZURE_CREDENTIALS | ConvertFrom-Json
         $secret = ConvertTo-SecureString $cred.clientSecret -AsPlainText -Force
         $psCredential = New-Object System.Management.Automation.PSCredential($cred.clientId, $secret)
-        $env:PSModulePath = "C:\Modules\az_3.5.0;" + $env:PSModulePath
         Connect-AzAccount -ServicePrincipal -Credential $psCredential -Tenant $cred.tenantId -SubscriptionId $cred.subscriptionId
         . .\Deploy-AzTemplate.ps1 -Location $env:LOCATION -ResourceGroupName $env:RESOURCE_GROUP_NAME -ValidateOnly
         
