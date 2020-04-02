@@ -24,17 +24,14 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
-    - name: Login to Azure
+    
+    - name: Deploy to Azure
       shell: pwsh
       run: |
-        [System.Environment]::SetEnvironmentVariable('PSModulePath', "C:\Modules\az_3.5.0;" + $env:PSModulePath, [System.EnvironmentVariableTarget]::User)
         $cred = $env:AZURE_CREDENTIALS | ConvertFrom-Json
         $secret = ConvertTo-SecureString $cred.clientSecret -AsPlainText -Force
         $psCredential = New-Object System.Management.Automation.PSCredential($cred.clientId, $secret)
+        $env:PSModulePath = "C:\Modules\az_3.5.0;" + $env:PSModulePath
         Connect-AzAccount -ServicePrincipal -Credential $psCredential -Tenant $cred.tenantId -SubscriptionId $cred.subscriptionId
-    - name: Validate ARM Deployment
-      shell: pwsh
-      run: |
         . .\Deploy-AzTemplate.ps1 -Location $env:LOCATION -ResourceGroupName $env:RESOURCE_GROUP_NAME -ValidateOnly
         
